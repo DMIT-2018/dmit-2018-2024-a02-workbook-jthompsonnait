@@ -3,14 +3,13 @@
     public partial class Basics
     {
         #region Privates
-        #region Methods
         //  used to display my name
         private string? myName;
         // the odd or even value
         private int oddEvenValue;
         #endregion
-        #endregion
 
+        #region Methods
         // Generates a random number between 0 and 25 using the Random class
         // Checks if the generated number is even
         // Sets the 'myName' variable to a message if even, or to null if odd
@@ -37,5 +36,7 @@
             // Trigger an asynchronous update of the component's state to reflect the changes made.
             InvokeAsync(StateHasChanged);
         }
+        #endregion
+
     }
 }

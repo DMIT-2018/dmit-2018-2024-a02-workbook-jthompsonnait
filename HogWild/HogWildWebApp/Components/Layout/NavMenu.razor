@@ -31,20 +31,25 @@
         </div>
         
         <div class="nav-item px-3">
-        <!-- NavLink to expand or collapse the Sample Pages section -->
-        <NavLink class="nav-link" @onclick="()=>expandSamplePages = !expandSamplePages">
-            <span class="oi oi-list-rich" aria-hidden="true"></span> Sample Pages
-        </NavLink>
-    
-        <!-- Check if the Sample Pages section is expanded -->
-        @if (expandSamplePages)
-        {
-            <!-- Nested NavLink within the Sample Pages section -->
-            <NavLink class="nav-link" href="/SamplePages/Basics">
-                <span>Basic</span>
+            <!-- NavLink to expand or collapse the Sample Pages section -->
+            <NavLink class="nav-link" @onclick="()=>expandSamplePages = !expandSamplePages">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Sample Pages
             </NavLink>
-        } 
+
+            <!-- Check if the Sample Pages section is expanded -->
+            @if (expandSamplePages)
+
+            {
+                <!-- Nested NavLink within the Sample Pages section -->
+                <NavLink class="nav-link" href="/SamplePages/Basics">
+
+                    <span>Basic</span>
+
+                </NavLink>
+            }
         </div>
+        
+        
 
 
         <div class="nav-item px-3">
@@ -87,9 +92,12 @@
 </div>
 
 @code {
-    //  Holds the current state of the Sample Pages section toggle
+    //  Holds the curre = true;nt state of the Sample Pages section toggle
     private bool expandSamplePages;
+
     private bool collapseNavMenu = true;
+
+
     private string? currentUrl;
 
     protected override void OnInitialized()

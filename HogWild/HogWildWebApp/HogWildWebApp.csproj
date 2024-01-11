@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-HogWildWebApp-8e3bb2a0-2159-4ee6-a207-cef285ac93f6</UserSecretsId>
+    <UserSecretsId>aspnet-HogWildWebApp-bec50d8f-3bd9-4dc3-b1d4-bd655ba34a79</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
