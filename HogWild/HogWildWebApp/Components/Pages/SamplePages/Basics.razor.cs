@@ -1,4 +1,6 @@
-﻿namespace HogWildWebApp.Components.Pages.SamplePages
+﻿using Microsoft.AspNetCore.Components;
+
+namespace HogWildWebApp.Components.Pages.SamplePages
 {
     public partial class Basics
     {
@@ -21,7 +23,8 @@
         //  selected meal
         private string meal = "breakfast";
         private string[] meals { get; set; } = new string[] { "breakfast", "lunch", "dinner", "snacks" };
-        //  used to hold the value of the acceptance
+       
+       //  used to hold the value of the acceptance
         private bool acceptanceBox;
         // used to hold the value for the message body
         private string messageBody;
@@ -75,6 +78,22 @@
             feedback = $"Email {emailText}; Password {passwordText}; Date {dateText}";
 
             // Trigger a re-render of the component to reflect the updated feedback.
+            InvokeAsync(StateHasChanged);
+        }
+
+        //  Handles the selection of the loop meal
+        private void HandleMealSelection(ChangeEventArgs e)
+        {
+            meal = e.Value.ToString();
+        }
+
+        //  This method is called when a user submits radio, check box and area text.
+        private void RadioCheckAreaSubmit()
+        {
+            // Combine various values and store them in the 'feedback' variable as a formatted string.
+            feedback = $"Meal {meal}; Acceptance {acceptanceBox}; Message {messageBody}";
+
+            // Trigger a UI update to reflect the changes made to the 'feedback' variable.
             InvokeAsync(StateHasChanged);
         }
         #endregion
