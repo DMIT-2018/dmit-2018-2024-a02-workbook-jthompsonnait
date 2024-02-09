@@ -48,69 +48,77 @@ namespace HogWildWebApp.Components.Pages.SamplePages
         //  search for an existing customer
         private void Search()
         {
-                try
-                {
-                    //  reset the error detail list
-                    errorDetails.Clear();
+            try
+            {
+                //  reset the error detail list
+                errorDetails.Clear();
 
-                    //  reset the error message to an empty string
-                    errorMessage = string.Empty;
+                //  reset the error message to an empty string
+                errorMessage = string.Empty;
 
-                    //  reset feedback message to an empty string
-                    feedbackMessage = String.Empty;
+                //  reset feedback message to an empty string
+                feedbackMessage = String.Empty;
 
-                    //  clear the customer list before we do our search
-                    Customers.Clear();
+                //  clear the customer list before we do our search
+                Customers.Clear();
 
-                    if (string.IsNullOrWhiteSpace(lastName) && string.IsNullOrWhiteSpace(phoneNumber))
-                    {
-                        throw new ArgumentException("Please provide either a last name and/or phone number");
-                    }
-                }
-                catch (ArgumentNullException ex)
+                if (string.IsNullOrWhiteSpace(lastName) && string.IsNullOrWhiteSpace(phoneNumber))
                 {
-                    errorMessage = BlazorHelperClass.GetInnerException(ex).Message;
+                    throw new ArgumentException("Please provide either a last name and/or phone number");
                 }
-                catch (ArgumentException ex)
+
+                Customers = CustomerService.GetCustomers(lastName, phoneNumber);
+                if (Customers.Count > 0)
                 {
-                    errorMessage = BlazorHelperClass.GetInnerException(ex).Message;
+                    feedbackMessage = "Search for customer(s) was successful";
                 }
-                catch (AggregateException ex)
+                else
                 {
-                    //  have a collection of errors
-                    //  each error should be place into a separate line
-                    if (!string.IsNullOrWhiteSpace(errorMessage))
-                    {
-                        errorMessage = $"{errorMessage}{Environment.NewLine}";
-                    }
-                    errorMessage = $"{errorMessage}Unable to search for customer";
-                    foreach (var error in ex.InnerExceptions)
-                    {
-                        errorDetails.Add(error.Message);
-                    }
+                    feedbackMessage = "No customer were found for your search criteria";
                 }
+            }
+            catch (ArgumentNullException ex)
+            {
+                errorMessage = BlazorHelperClass.GetInnerException(ex).Message;
+            }
+            catch (ArgumentException ex)
+            {
+                errorMessage = BlazorHelperClass.GetInnerException(ex).Message;
+            }
+            catch (AggregateException ex)
+            {
+                //  have a collection of errors
+                //  each error should be place into a separate line
+                if (!string.IsNullOrWhiteSpace(errorMessage))
+                {
+                    errorMessage = $"{errorMessage}{Environment.NewLine}";
+                }
+                errorMessage = $"{errorMessage}Unable to search for customer";
+                foreach (var error in ex.InnerExceptions)
+                {
+                    errorDetails.Add(error.Message);
+                }
+            }
         }
 
-            //  new customer
+        //  new customer
         private void New()
         {
 
         }
 
         //  edit selected customer
-        private void EditCustomer()
+        private void EditCustomer(int customerID)
         {
 
         }
 
         //  new invoice for selected customer
-        private void NewInvoice()
+        private void NewInvoice(int customerID)
         {
 
         }
 
         #endregion
-
-
     }
 }
