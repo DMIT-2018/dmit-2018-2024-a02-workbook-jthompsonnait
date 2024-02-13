@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HogWildSystem.Paginator;
 using HogWildSystem.ViewModels;
 
 namespace HogWildSystem.BLL
@@ -26,7 +27,9 @@ namespace HogWildSystem.BLL
             _hogWildContext = hogWildContext;
         }
 
-        public List<CustomerSearchView> GetCustomers(string lastName, string phone)
+        public Task<PagedResult<CustomerSearchView>> GetCustomers(string lastName, string phone,
+                int page, int pageSize, string sortColumn,
+                string direction)
         {
             // Business Rules
             // These are processing rules that need to be satisfied
@@ -51,7 +54,9 @@ namespace HogWildSystem.BLL
                 phone = Guid.NewGuid().ToString();
             }
 
-            return _hogWildContext.Customers
+            //  Task.FromResult() creates a finished Task
+            //    that holds a value in its Result property
+            return Task.FromResult(_hogWildContext.Customers
                 .Where(x => (x.LastName.Contains(lastName)
                              || x.Phone.Contains(phone))
                             && !x.RemoveFromViewFlag)
@@ -66,8 +71,9 @@ namespace HogWildSystem.BLL
                     StatusID = x.StatusID,
                     TotalSales = x.Invoices.Sum(x => x.SubTotal + x.Tax)
                 })
-                .OrderBy(x => x.LastName)
-                .ToList();
+                .AsQueryable()
+                .OrderBy(sortColumn, direction)
+                .ToPagedResult(page, pageSize)); ;
         }
     }
 }
