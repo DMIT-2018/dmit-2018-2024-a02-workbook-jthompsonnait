@@ -1,4 +1,5 @@
 ﻿using HogWildSystem.BLL;
+using HogWildSystem.Paginator;
 using HogWildSystem.ViewModels;
 using Microsoft.AspNetCore.Components;
 
@@ -29,6 +30,24 @@ namespace HogWildWebApp.Components.Pages.SamplePages
         // error details
         private List<string> errorDetails = new();
         #endregion
+
+        #region Paginator
+        // Desired current page size
+        private const int PAGE_SIZE = 10;
+
+        // sort column used with the paginator
+        protected string SortField { get; set; } = "Owner";
+
+        // sort direction for the paginator
+        protected string Direction { get; set; } = "desc";
+
+        //  current page for the paginator
+        protected int CurrentPage { get; set; } = 1;
+
+        //paginator collection of customer Search view
+        protected PagedResult<CustomerSearchView> PaginatorCustomerSearch { get; set; } = new();
+        #endregion
+
 
         #region Properties
         // Injects the CustomerService dependency.
