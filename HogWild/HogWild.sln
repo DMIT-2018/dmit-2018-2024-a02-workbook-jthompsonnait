@@ -5,7 +5,7 @@ VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HogWildWebApp", "HogWildWebApp\HogWildWebApp.csproj", "{7B958AD4-223C-49AD-94BD-74BA2D9AE308}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HogWildSystem", "HogWildSystem\HogWildSystem.csproj", "{DC4C746F-FC4F-46C6-B4E9-0FF102AB075F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HogWIldSystem", "HogWIldSystem\HogWIldSystem.csproj", "{DE353A1D-A641-4497-AE26-BE1B071543B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{7B958AD4-223C-49AD-94BD-74BA2D9AE308}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B958AD4-223C-49AD-94BD-74BA2D9AE308}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B958AD4-223C-49AD-94BD-74BA2D9AE308}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC4C746F-FC4F-46C6-B4E9-0FF102AB075F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC4C746F-FC4F-46C6-B4E9-0FF102AB075F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC4C746F-FC4F-46C6-B4E9-0FF102AB075F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC4C746F-FC4F-46C6-B4E9-0FF102AB075F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE353A1D-A641-4497-AE26-BE1B071543B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE353A1D-A641-4497-AE26-BE1B071543B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE353A1D-A641-4497-AE26-BE1B071543B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE353A1D-A641-4497-AE26-BE1B071543B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

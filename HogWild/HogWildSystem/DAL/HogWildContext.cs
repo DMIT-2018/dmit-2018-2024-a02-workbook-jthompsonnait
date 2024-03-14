@@ -2,7 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
-using HogWildSystem.Entities;
+using HogWIldSystem.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace HogWildSystem.DAL;

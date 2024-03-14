@@ -1,4 +1,4 @@
-﻿using HogWildWebApp.Data.ViewModel;
+﻿using HogWildWebApp.Data.ViewModels;
 using Microsoft.AspNetCore.Components;
 
 namespace HogWildWebApp.Components.Pages.SamplePages
@@ -10,6 +10,7 @@ namespace HogWildWebApp.Components.Pages.SamplePages
         private string? myName;
         // the odd or even value
         private int oddEvenValue;
+        #endregion
 
         #region Text Boxes
         //  email address
@@ -23,8 +24,7 @@ namespace HogWildWebApp.Components.Pages.SamplePages
         #region Radio Buttons, Checkboxes & Text Area
         //  selected meal
         private string meal = "breakfast";
-        private string[] meals { get; set; } = new string[] { "breakfast", "lunch", "dinner", "snacks" };
-
+        private string[] meals  = new string[] { "breakfast", "lunch", "dinner", "snacks" };
         //  used to hold the value of the acceptance
         private bool acceptanceBox;
         // used to hold the value for the message body
@@ -35,8 +35,7 @@ namespace HogWildWebApp.Components.Pages.SamplePages
 
         //  pretend tat the following collection is data from a database
         //  The collection is based on a 2 property class called SelectionList
-        // ViewModel
-        // The data for the list will be created in a separate method.
+        //  The data for the list will be created in a separate method.
         /// <summary>
         /// Gets or sets a list of SelectionView objects representing various rides.
         /// </summary>
@@ -63,9 +62,11 @@ namespace HogWildWebApp.Components.Pages.SamplePages
         //  The review rating
         private int reviewRating = 5;
         #endregion
+
         //  used to display any feedback to the end user.
         private string feedback;
-        #endregion
+        
+
 
         #region Methods
         // This method is automatically called when the component is initialized.
@@ -80,7 +81,6 @@ namespace HogWildWebApp.Components.Pages.SamplePages
             // Call the 'PopulatedList' method to populate predefined data for the list.
             PopulatedList();
         }
-
         // Generates a random number between 0 and 25 using the Random class
         // Checks if the generated number is even
         // Sets the 'myName' variable to a message if even, or to null if odd
@@ -118,7 +118,7 @@ namespace HogWildWebApp.Components.Pages.SamplePages
             InvokeAsync(StateHasChanged);
         }
 
-        //  Handles the selection of the loop meal
+        // Handle the selection of the loop meal
         private void HandleMealSelection(ChangeEventArgs e)
         {
             meal = e.Value.ToString();
@@ -178,6 +178,5 @@ namespace HogWildWebApp.Components.Pages.SamplePages
             InvokeAsync(StateHasChanged);
         }
         #endregion
-
     }
 }

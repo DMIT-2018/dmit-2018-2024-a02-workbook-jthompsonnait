@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace HogWildSystem.Entities;
+namespace HogWIldSystem.Entities;
 
 [Table("Employee")]
 internal partial class Employee

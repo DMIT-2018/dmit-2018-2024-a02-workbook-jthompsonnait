@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-
-
 // https://github.com/villainoustourist/Blazor.Pagination/tree/master
 
 

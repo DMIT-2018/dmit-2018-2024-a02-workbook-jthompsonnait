@@ -15,7 +15,7 @@
 
 void Main()
 {
-	GetCustomers("Fo", "").Dump();
+	GetCustomers("Fo", "7809753079").Dump();
 }
 
 public List<CustomerSearchView> GetCustomers(string lastName, string phone)
@@ -44,8 +44,8 @@ public List<CustomerSearchView> GetCustomers(string lastName, string phone)
 	}
 
 	return Customers
-				.Where(x => (x.LastName.Contains(lastName)
-							 || x.Phone.Contains(phone))
+				.Where(x => (x.LastName.Contains(lastName.Trim())
+							 || x.Phone.Contains(phone.Trim()))
 							&& !x.RemoveFromViewFlag)
 				.Select(x => new CustomerSearchView
 				{

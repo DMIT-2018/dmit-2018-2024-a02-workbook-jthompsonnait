@@ -9,7 +9,7 @@
    "OutputContextPath": "DAL",
    "OutputPath": "Entities",
    "PreserveCasingWithRegex": true,
-   "ProjectRootNamespace": "HogWildSystem",
+   "ProjectRootNamespace": "HogWIldSystem",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 2,
    "SelectedToBeGenerated": 0,

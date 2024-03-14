@@ -1,4 +1,4 @@
-using HogWildSystem;
+using HogWIldSystem;
 using HogWildWebApp.Components;
 using HogWildWebApp.Components.Account;
 using HogWildWebApp.Data;
@@ -23,13 +23,13 @@ builder.Services.AddAuthentication(options =>
         options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
     })
     .AddIdentityCookies();
-
 // Add services to the container.
 //  :given (This is code that is provided when we create our application)
 //  supplied database connection due to the fact that we created this
 //      web app to use Individual accounts
 //  Core retrieves the connection string from appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
 //  :added
 //  code retrieves the HogWild connection string
 var connectionStringHogWild = builder.Configuration.GetConnectionString("OLTP-DMIT2018");
@@ -52,6 +52,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddBackendDependencies(options =>
     options.UseSqlServer(connectionStringHogWild));
 
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
@@ -60,6 +61,7 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+builder.Services.AddTelerikBlazor();
 
 var app = builder.Build();
 

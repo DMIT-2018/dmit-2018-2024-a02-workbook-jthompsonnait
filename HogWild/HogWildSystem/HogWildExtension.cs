@@ -1,9 +1,10 @@
 ﻿using HogWildSystem.BLL;
+using HogWIldSystem.BLL;
 using HogWildSystem.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace HogWildSystem
+namespace HogWIldSystem
 {
     public static class HogWildExtension
     {
@@ -24,7 +25,6 @@ namespace HogWildSystem
             // connection string.
 
             services.AddDbContext<HogWildContext>(options);
-
             //  adding any services that you create in the class library (BLL)
             //  using .AddTransient<t>(...)
             //  working versions

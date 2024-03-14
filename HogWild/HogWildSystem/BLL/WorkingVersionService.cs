@@ -1,6 +1,6 @@
 ﻿#nullable disable
-using HogWildSystem.DAL;
 using HogWildSystem.ViewModels;
+using HogWildSystem.DAL;
 
 namespace HogWildSystem.BLL
 {
@@ -15,13 +15,12 @@ namespace HogWildSystem.BLL
 
         #endregion
 
-        // Constructor for the WorkingVersionsService class.
+        // Constructor for the WorkingVersionService class.
         internal WorkingVersionService(HogWildContext hogWildContext)
         {
             // Initialize the _hogWildContext field with the provided HogWildContext instance.
             _hogWildContext = hogWildContext;
         }
-
         public WorkingVersionView GetWorkingVersion()
         {
             return

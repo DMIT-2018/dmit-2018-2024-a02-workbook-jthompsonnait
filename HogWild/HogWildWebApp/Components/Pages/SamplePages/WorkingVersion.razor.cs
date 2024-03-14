@@ -4,15 +4,15 @@ using Microsoft.AspNetCore.Components;
 
 namespace HogWildWebApp.Components.Pages.SamplePages
 {
-    public partial class WorkingVersions
+    public partial class WorkingVersion
     {
-
         #region Fields
         //  Property for holding any feedback messages
         private string feedback;
         // This private field holds a reference to the WorkingVersionsView instance.
         private WorkingVersionView workingVersionView = new WorkingVersionView();
         #endregion
+
 
         #region Properties
         // This attribute marks the property for dependency injection.
@@ -58,5 +58,5 @@ namespace HogWildWebApp.Components.Pages.SamplePages
 
         #endregion
     }
-}
 
+}

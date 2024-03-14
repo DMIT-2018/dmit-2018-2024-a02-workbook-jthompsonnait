@@ -1,5 +1,8 @@
-﻿namespace HogWildWebApp.Data.ViewModel
+﻿namespace HogWildWebApp.Data.ViewModels
 {
+    /// <summary>
+    /// Represents a selection view item, typically used in user interfaces.
+    /// </summary>
     public class SelectionView
     {
         /// <summary>

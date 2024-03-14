@@ -1,11 +1,10 @@
-﻿using HogWildSystem.Paginator;
-using HogWIldSystem.BLL;
+﻿using HogWIldSystem.BLL;
 using HogWIldSystem.ViewModels;
 using Microsoft.AspNetCore.Components;
 
 namespace HogWildWebApp.Components.Pages.SamplePages
 {
-    public partial class CustomerList
+    public partial class TelerikCustomerList
     {
         #region Fields
 
@@ -29,53 +28,10 @@ namespace HogWildWebApp.Components.Pages.SamplePages
 
         // error details
         private List<string> errorDetails = new();
+
+        private bool loaderVisible { get; set; } = false;
         #endregion
-        #region Paginator
-        // Desired current page size
-        private const int PAGE_SIZE = 10;
 
-        // sort column used with the paginator
-        protected string SortField { get; set; } = "Owner";
-
-        // sort direction for the paginator
-        protected string Direction { get; set; } = "desc";
-
-        //  current page for the paginator
-        protected int CurrentPage { get; set; } = 1;
-
-        //paginator collection of customer Search view
-        protected PagedResult<CustomerSearchView> PaginatorCustomerSearch { get; set; } = new();
-        private async void Sort(string column)
-        {
-            Direction = SortField == column ? Direction == "asc" ? "desc"
-                : "asc" : "asc";
-            SortField = column;
-            await Search();
-        }
-
-        //  sets css class to display up and down arrows
-        private string GetSortColumn(string x)
-        {
-            return x == SortField ? Direction == "desc" ? "desc" : "asc" : "";
-        }
-
-        // Sets the sort icon.
-        private string SetSortIcon(string columnName)
-        {
-            if (SortField != columnName)
-            {
-                return "fa fa-sort";
-            }
-            if (Direction == "asc")
-            {
-                return "fa fa-sort-up";
-            }
-            else
-            {
-                return "fa fa-sort-down";
-            }
-        }
-        #endregion
         #region Properties
         // Injects the CustomerService dependency.
         [Inject]
@@ -96,6 +52,10 @@ namespace HogWildWebApp.Components.Pages.SamplePages
         {
             try
             {
+                loaderVisible = true;
+                //  added a delay to give the component a chance to load.
+                await Task.Delay(1000);
+                
                 //  reset the error detail list
                 errorDetails.Clear();
 
@@ -114,18 +74,9 @@ namespace HogWildWebApp.Components.Pages.SamplePages
                 }
 
                 //  search for our customers
-                PaginatorCustomerSearch = await CustomerService.GetCustomers(lastName, phoneNumber,
-                    CurrentPage, PAGE_SIZE, SortField, Direction);
+                Customers = CustomerService.GetCustomers(lastName, phoneNumber);
                 await InvokeAsync(StateHasChanged);
-                if (PaginatorCustomerSearch.Results.Length > 0)
-
-                {
-                    feedbackMessage = "Search for customer(s) was successful";
-                }
-                else
-                {
-                    feedbackMessage = "No customer were found for your search criteria";
-                }
+                loaderVisible = false;
             }
             catch (ArgumentNullException ex)
             {
@@ -154,17 +105,17 @@ namespace HogWildWebApp.Components.Pages.SamplePages
         //  new customer
         private void New()
         {
-            NavigationManager.NavigateTo("/SamplePages/CustomerEdit/0");
+
         }
 
         //  edit selected customer
-        private void EditCustomer(int customerID)
+        private void EditCustomer()
         {
-            NavigationManager.NavigateTo($"/SamplePages/CustomerEdit/{customerID}");
+
         }
 
         //  new invoice for selected customer
-        private void NewInvoice(int customerID)
+        private void NewInvoice()
         {
 
         }

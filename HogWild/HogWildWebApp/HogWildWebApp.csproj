@@ -12,11 +12,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.1" />
-    <PackageReference Include="MudBlazor" Version="6.15.0" />
+    <PackageReference Include="Telerik.UI.for.Blazor" Version="5.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HogWildSystem\HogWildSystem.csproj" />
+    <ProjectReference Include="..\HogWIldSystem\HogWIldSystem.csproj" />
   </ItemGroup>
 
 </Project>
