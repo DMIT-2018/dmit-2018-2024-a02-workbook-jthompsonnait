@@ -13,14 +13,14 @@
   </Connection>
 </Query>
 
-Customers
-	.GroupBy(c => c.Address.Region)
-	.Select(g => new
-	{
-	Region = g.Key == null ? "Unknown" : g.Key,
-	OrderCount = g.Sum(c => c.Orders.Count)
-	}).Dump();
-	
+//Customers
+//	.GroupBy(c => c.Address.Region)
+//	.Select(g => new
+//	{
+//	Region = g.Key == null ? "Unknown" : g.Key,
+//	OrderCount = g.Sum(c => c.Orders.Count())
+//	}).Dump();
+//	
 	OrderDetails
 		.GroupBy(p => p.Product.ProductName)
 		.Select(x => new 
