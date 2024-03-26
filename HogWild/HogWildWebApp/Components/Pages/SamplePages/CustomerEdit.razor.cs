@@ -1,4 +1,6 @@
-﻿using HogWIldSystem.BLL;
+﻿using HogWildSystem.BLL;
+using HogWildSystem.ViewModels;
+using HogWIldSystem.BLL;
 using HogWIldSystem.ViewModels;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
@@ -18,7 +20,13 @@ namespace HogWildWebApp.Components.Pages.SamplePages
         private List<LookupView> countries = new();
         //  The status lookup
         private List<LookupView> statusLookup = new();
-
+        //  list of invoices
+        private List<InvoiceView> invoices = new List<InvoiceView>();
+        //  Disable the new/edit buttons if we have unsave changes
+        //  NOTE: This should be call disableAddEditInvoice buttons
+        //          button the PowerPoint slides had already
+        //          been created
+        private bool disableViewButton => !disableSaveButton;
 
         #endregion
 
@@ -41,7 +49,7 @@ namespace HogWildWebApp.Components.Pages.SamplePages
         private string feedbackMessage;
 
         //  placeholder for error messasge
-        private string errorMessage;
+        private string? errorMessage;
 
         //  return has feedback
         private bool hasFeedback => !string.IsNullOrWhiteSpace(feedbackMessage);
@@ -60,6 +68,9 @@ namespace HogWildWebApp.Components.Pages.SamplePages
 
         //  The category lookup service
         [Inject] protected CategoryLookupService CategoryLookupService { get; set; }
+
+        //  The invoice service
+        [Inject] protected InvoiceService InvoiceService { get; set; }
 
         //   Injects the NavigationManager dependency
         [Inject]
@@ -106,13 +117,14 @@ namespace HogWildWebApp.Components.Pages.SamplePages
                 if (CustomerID > 0)
                 {
                     customer = CustomerService.GetCustomer(CustomerID);
+                    invoices = InvoiceService.GetCustomerInvoices(CustomerID);
                 }
 
                 // lookups
                 provinces = CategoryLookupService.GetLookups("Province");
                 countries = CategoryLookupService.GetLookups("Country");
                 statusLookup = CategoryLookupService.GetLookups("Customer Status");
-               
+
                 await InvokeAsync(StateHasChanged);
             }
             catch (ArgumentNullException ex)
@@ -222,6 +234,23 @@ namespace HogWildWebApp.Components.Pages.SamplePages
         private async void Cancel()
         {
             NavigationManager.NavigateTo("/SamplePages/CustomerList");
+        }
+
+        /// New invoice.
+        private void NewInvoice()
+        {
+            //  NOTE:   we will hard code employee ID (1)            
+            NavigationManager.NavigateTo($"/SamplePages/InvoiceEdit/0/{CustomerID}/1");
+        }
+
+        /// <summary>
+        /// Edit the invoice.
+        /// </summary>
+        /// <param name="invoiceID">The invoice identifier.</param>
+        private void EditInvoice(int invoiceID)
+        {
+            //  NOTE:   we will hard code employee ID (1)            
+            NavigationManager.NavigateTo($"/SamplePages/InvoiceEdit/{invoiceID}/{CustomerID}/1");
         }
     }
 }
