@@ -1,0 +1,42 @@
+﻿@page "/SamplePages/SimpleValidation"
+<h3>Simple Validation</h3>
+
+<body>
+<!-- Column 1 -->
+<div class="form-column">
+    <div class="form-row">
+        <label for="firstName">First Name:</label>
+        <InputText id="firstName" class="input-background" @bind-Value="firstName" />
+        
+    </div>
+    <div class="form-row">
+        <label for="lastName">Last Name:</label>
+        <InputText id="lastName" class="input-background" @bind-Value="lastName" />
+        
+    </div>
+    <div class="form-row">
+        <label for="city">City:</label>
+        <InputText id="city" class="input-background" @bind-Value="city" />
+    </div>
+</div>
+    <button class="btn-success"  @onclick="Save">Save</button>
+</body>
+
+<footer>
+    @if (hasFeedback)
+    {
+        <blockquote>@feedbackMessage</blockquote>
+    }
+    @if (hasError)
+    {
+        <blockquote>
+            @errorMessage
+            <ul>
+                @foreach (var detail in errorDetails)
+                {
+                    <li>@detail</li>
+                }
+            </ul>
+        </blockquote>
+    }
+</footer>
